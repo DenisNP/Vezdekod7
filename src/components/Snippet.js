@@ -4,7 +4,7 @@ import {Card, CardGrid, Cell, Group, Separator, InfoRow, Progress, Div, Button} 
 import "./Snippet.css";
 import {authors} from "../state";
 
-const Snippet = ({data, help}) => {
+const Snippet = ({data, help, open}) => {
     const [doneText, setDoneText] = useState("");
 
     useEffect(() => {
@@ -16,14 +16,14 @@ const Snippet = ({data, help}) => {
     });
 
     return (
-        <CardGrid>
+        <CardGrid style={{marginBottom: 6}}>
             <Card size="l" mode="outline">
-                <div className="snippet-image" style={{backgroundImage: `url(${data.image})`}}/>
+                <div className="snippet-image" onClick={open} style={{backgroundImage: `url(${data.image})`}}/>
                 <Group>
-                    <Cell size="l" description={authors[data.author]}>{data.name}</Cell>
+                    <Cell size="l" onClick={open} description={authors[data.author]}>{data.name}</Cell>
                     <Separator/>
                     <Div className="amount-block">
-                        <InfoRow header={doneText} className="amount-info-row">
+                        <InfoRow header={doneText} className="amount-info-row" onClick={open}>
                             <Progress value={(!data || !data.amount || Number.isNaN(data.amount)) ? 0 : ((data.donated / data.amount) * 100)}/>
                         </InfoRow>
                         <Button

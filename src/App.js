@@ -8,6 +8,7 @@ import "./App.css";
 import Form from "./panels/Form";
 import Additional from "./panels/Additional";
 import Post from "./panels/Post";
+import Wall from "./panels/Wall";
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState("start");
@@ -39,6 +40,7 @@ const App = () => {
 			<Form id="form" go={changePanel}/>
 			<Additional id="additional" go={changePanel}/>
 			<Post id="post" go={changePanel}/>
+			<Wall id="wall" go={changePanel}/>
 		</View>
 	);
 }
