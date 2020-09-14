@@ -38,7 +38,7 @@ const Form = ({id, go}) => {
         setName(state.name);
         setAmount(state.amount);
         setTarget(state.target);
-        setDesc(state.description);
+        setDesc(state.desc);
         setReceiver(state.receiver);
         setAuthor(state.author);
     }, []);
@@ -71,6 +71,15 @@ const Form = ({id, go}) => {
 
     const goNext = () => {
         if (image && name && desc && amount && target) {
+            setState({
+               name,
+               target,
+               amount,
+               receiver,
+               author,
+               image,
+               desc,
+            });
             isRegular ? go("post") : go("additional");
         }
     };

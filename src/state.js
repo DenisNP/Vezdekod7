@@ -9,7 +9,7 @@ export const getState = (forceClear) => {
             name: '',
             amount: NaN,
             target: '',
-            description: '',
+            desc: '',
             receiver: 0,
             author: 0,
             endAmount: false,

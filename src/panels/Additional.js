@@ -14,7 +14,7 @@ import {
 } from "@vkontakte/vkui";
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
-import {authors, getState} from "../state";
+import {authors, getState, setState} from "../state";
 
 const osName = platform();
 
@@ -31,6 +31,18 @@ const Additional = ({id, go}) => {
         setEndDate(state.endDate);
         setDate(state.date);
     }, []);
+
+    const goNext = () => {
+        if (endAmount || endDate) {
+            setState({
+               author,
+               endAmount,
+               endDate,
+               date,
+            });
+            go("post");
+        }
+    };
 
     return (
         <Panel id={id}>
@@ -66,6 +78,7 @@ const Additional = ({id, go}) => {
                     <Input
                         type="date"
                         top="Дата"
+                        min={new Date().toJSON().split('T')[0]}
                         value={date}
                         onChange={(e) => setDate(e.currentTarget.value)}
                     />
@@ -73,7 +86,7 @@ const Additional = ({id, go}) => {
 
                 <Button
                     size="xl"
-                    onClick={() => {(endAmount || endDate) && go("post")}}
+                    onClick={goNext}
                     style={{opacity: (endAmount || endDate) ? 1.0 : 0.5}}
                 >
                     Создать сбор
