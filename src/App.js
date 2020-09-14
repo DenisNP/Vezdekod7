@@ -9,6 +9,8 @@ import Form from "./panels/Form";
 import Additional from "./panels/Additional";
 import Post from "./panels/Post";
 import Wall from "./panels/Wall";
+import Show from "./panels/Show";
+import {getState, setState} from "./state";
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState("start");
@@ -16,6 +18,10 @@ const App = () => {
 	const changePanel = (p) => {
 		setActivePanel(p);
 		window.history.pushState({panel: p}, "");
+	};
+
+	const help = () => {
+		setState({donated: getState().donated - (-100)});
 	};
 
 	useEffect(() => {
@@ -40,7 +46,8 @@ const App = () => {
 			<Form id="form" go={changePanel}/>
 			<Additional id="additional" go={changePanel}/>
 			<Post id="post" go={changePanel}/>
-			<Wall id="wall" go={changePanel}/>
+			<Wall id="wall" go={changePanel} help={help}/>
+			<Show id="show" help={help}/>
 		</View>
 	);
 }

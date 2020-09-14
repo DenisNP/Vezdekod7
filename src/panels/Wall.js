@@ -4,12 +4,12 @@ import {PanelHeaderButton, Panel, PanelHeader, platform, IOS, SimpleCell, Avatar
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Snippet from "../components/Snippet";
-import {authors, getState} from "../state";
+import {authors, getState, setState} from "../state";
 import "./Wall.css";
 
 const osName = platform();
 
-const Wall = ({id, go}) => {
+const Wall = ({id, go, help}) => {
     const [authorName, setAuthorName] = useState("");
     const [data, setData] = useState({});
 
@@ -22,12 +22,13 @@ const Wall = ({id, go}) => {
         setData(getState());
     });
 
-    const help = () => {
-        console.log(111);
+    const helpHandler = () => {
+        help();
+        setData(getState());
     };
 
     const open = () => {
-        console.log(222);
+        go("show");
     };
 
     return (
@@ -46,7 +47,7 @@ const Wall = ({id, go}) => {
             >
                 {authorName}
             </SimpleCell>
-            <Snippet data={data} help={help} open={open}/>
+            <Snippet data={data} help={helpHandler} open={open}/>
             <div className="wall-dummy"/>
             <div className="wall-dummy"/>
             <div className="wall-dummy"/>
