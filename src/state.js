@@ -1,27 +1,41 @@
+let state = null;
+
 export const getState = (forceClear) => {
-    const s = localStorage.getItem("state");
+    const s = state;
     if (!s || forceClear) {
         const newState = {
             isRegular: false,
             image: '',
             name: '',
-            amount: 0,
+            amount: NaN,
             target: '',
             description: '',
             receiver: 0,
             author: 0,
         };
 
-        localStorage.setItem("state", JSON.stringify(newState));
+        state = newState;
         return newState;
     } else {
-        return JSON.parse(s);
+        return s;
     }
 };
 
 export const setState = (obj) => {
     const s = getState();
     const newState = {...s, ...obj};
-    localStorage.setItem("state", JSON.stringify(newState));
+    state = newState;
     return newState;
 };
+
+export const authors = [
+    "Василий Иванов",
+    "Иван Петров",
+    "Пётр Васечкин"
+];
+
+export const receivers = [
+    "Счёт VK Pay • 1234",
+    "Наличкой по почте",
+    "Борзыми щенками"
+];

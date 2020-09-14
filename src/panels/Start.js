@@ -9,7 +9,7 @@ const Start = ({id, go}) => {
         <Panel id={id}>
             <PanelHeader>Пожертвования</PanelHeader>
             <div className={osName === IOS ? "center-vertical-ios" : "center-vertical-android"}>
-                <Placeholder action={<Button onClick={go}>Создать сбор</Button>}>
+                <Placeholder action={<Button onClick={() => {go("selectType")}}>Создать сбор</Button>}>
                     У вас пока нет сборов.<br/>Начните доброе дело.
                 </Placeholder>
             </div>

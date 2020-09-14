@@ -9,21 +9,21 @@ import {setState} from "../state";
 
 const osName = platform();
 
-const SelectType = ({id, back, go}) => {
+const SelectType = ({id, go}) => {
     const goNonRegular = () => {
         setState({isRegular: false});
-        go();
+        go("form");
     };
-    
+
     const goRegular = () => {
         setState({isRegular: true});
-        go();
+        go("form");
     };
 
     return (
         <Panel id={id}>
             <PanelHeader
-                left={<PanelHeaderButton onClick={back}>
+                left={<PanelHeaderButton onClick={() => window.history.back()}>
                     {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </PanelHeaderButton>}
             >
