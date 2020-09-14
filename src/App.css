@@ -1,11 +1,13 @@
-.center-vertical-ios {
-    margin-top: calc(50vh - var(--panelheader_height_ios));
-    transform: translateY(-50%);
-}
-
-.center-vertical-android {
-    margin-top: calc(50vh - var(--panelheader_height_android));
-    transform: translateY(-50%);
+.center-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .accent-color {

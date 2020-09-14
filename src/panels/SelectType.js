@@ -29,21 +29,23 @@ const SelectType = ({id, go}) => {
             >
                 Тип сбора
             </PanelHeader>
-            <div className={osName === IOS ? "center-vertical-ios" : "center-vertical-android"}>
-                <Banner
-                    before={<Icon28TargetOutline className="accent-color"/>}
-                    header="Целевой сбор"
-                    subheader="Когда есть определённая цель"
-                    asideMode="expand"
-                    onClick={goNonRegular}
-                />
-                <Banner
-                    before={<Icon28CalendarOutline className="accent-color"/>}
-                    header="Регулярный сбор"
-                    subheader="Если помощь нужна ежемесячно"
-                    asideMode="expand"
-                    onClick={goRegular}
-                />
+            <div className="center-absolute">
+                <div style={{width: "100%"}}>
+                    <Banner
+                        before={<Icon28TargetOutline className="accent-color"/>}
+                        header="Целевой сбор"
+                        subheader="Когда есть определённая цель"
+                        asideMode="expand"
+                        onClick={goNonRegular}
+                    />
+                    <Banner
+                        before={<Icon28CalendarOutline className="accent-color"/>}
+                        header="Регулярный сбор"
+                        subheader="Если помощь нужна ежемесячно"
+                        asideMode="expand"
+                        onClick={goRegular}
+                    />
+                </div>
             </div>
         </Panel>
     );

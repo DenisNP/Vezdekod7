@@ -15,6 +15,7 @@ export const getState = (forceClear) => {
             endAmount: false,
             endDate: false,
             date: "2021-01-01",
+            donated: 0,
         };
 
         state = newState;
