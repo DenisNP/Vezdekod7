@@ -1,9 +1,7 @@
 import React from 'react';
 import '@vkontakte/vkui/dist/vkui.css';
-import {Button, IOS, Panel, PanelHeader, Placeholder, platform} from "@vkontakte/vkui";
+import {Button, Panel, PanelHeader, Placeholder} from "@vkontakte/vkui";
 import {getState} from "../state";
-
-const osName = platform();
 
 const Start = ({id, go}) => {
 

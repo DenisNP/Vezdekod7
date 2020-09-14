@@ -1,0 +1,21 @@
+.snippet-image {
+    width: 100%;
+    height: 140px;
+    background-position: center;
+    background-size: cover;
+}
+
+.amount-info-row {
+    width: 100%;
+}
+
+.amount-info-row .Subhead {
+    color: var(--text_primary);
+    font-weight: 500;
+    padding-bottom: 4px;
+}
+
+.amount-block {
+    display: flex;
+    justify-content: space-between;
+}

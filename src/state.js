@@ -16,6 +16,7 @@ export const getState = (forceClear) => {
             endDate: false,
             date: "2021-01-01",
             donated: 0,
+            wallText: "",
         };
 
         state = newState;

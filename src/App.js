@@ -7,6 +7,7 @@ import SelectType from "./panels/SelectType";
 import "./App.css";
 import Form from "./panels/Form";
 import Additional from "./panels/Additional";
+import Post from "./panels/Post";
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState("start");
@@ -37,6 +38,7 @@ const App = () => {
 			<SelectType id="selectType" go={changePanel}/>
 			<Form id="form" go={changePanel}/>
 			<Additional id="additional" go={changePanel}/>
+			<Post id="post" go={changePanel}/>
 		</View>
 	);
 }

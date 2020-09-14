@@ -95,7 +95,7 @@ const Form = ({id, go}) => {
             </PanelHeader>
             <Div>
                 {image
-                    ? <div className="bg-image" style={{"backgroundImage": `url(${image})`}}>
+                    ? <div className="bg-image" style={{backgroundImage: `url(${image})`}}>
                         <div className="remove-btn" onClick={clearImage}>✕</div>
                     </div>
                     : <label>
@@ -117,8 +117,8 @@ const Form = ({id, go}) => {
                     onChange={(e) => setName(e.currentTarget.value)}
                 />
                 <Input
-                    top="Сумма, ₽"
-                    placeholder="Сколько нужно собрать?"
+                    top={`${isRegular ? "Сумма в месяц" : "Сумма"}, ₽`}
+                    placeholder={`Сколько нужно ${isRegular ? "в месяц" : "собрать"}?`}
                     type="number"
                     value={Number.isNaN(amount) ? NaN.toString() : amount}
                     onChange={(e) => writeAmount(e.currentTarget.value)}
