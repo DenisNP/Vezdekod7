@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import View from '@vkontakte/vkui/dist/components/View/View';
+import bridge from '@vkontakte/vk-bridge';
 import '@vkontakte/vkui/dist/vkui.css';
 import Start from "./panels/Start";
 import SelectType from "./panels/SelectType";
@@ -20,6 +21,14 @@ const App = () => {
 		window.onpopstate = function(e) {
 			setActivePanel((e.state && e.state.panel) || "start")
 		};
+
+		bridge.subscribe(({ detail: { type, data }}) => {
+			if (type === 'VKWebAppUpdateConfig') {
+				const schemeAttribute = document.createAttribute('scheme');
+				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
+				document.body.attributes.setNamedItem(schemeAttribute);
+			}
+		});
 	}, []);
 
 	return (

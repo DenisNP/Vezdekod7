@@ -12,6 +12,9 @@ export const getState = (forceClear) => {
             description: '',
             receiver: 0,
             author: 0,
+            endAmount: false,
+            endDate: false,
+            date: "2021-01-01",
         };
 
         state = newState;

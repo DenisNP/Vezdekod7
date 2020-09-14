@@ -1,6 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import '@vkontakte/vkui/dist/vkui.css';
-import {PanelHeaderButton, Panel, PanelHeader, platform, IOS, Checkbox, FormLayout, Select, FormLayoutGroup} from "@vkontakte/vkui";
+import {
+    PanelHeaderButton,
+    Panel,
+    PanelHeader,
+    platform,
+    IOS,
+    Checkbox,
+    FormLayout,
+    Select,
+    FormLayoutGroup,
+    FormStatus, Input, Button
+} from "@vkontakte/vkui";
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import {authors, getState} from "../state";
@@ -9,10 +20,16 @@ const osName = platform();
 
 const Additional = ({id, go}) => {
     const [author, setAuthor] = useState(0);
+    const [endAmount, setEndAmount] = useState(false);
+    const [endDate, setEndDate] = useState(false);
+    const [date, setDate] = useState("2021-01-01");
 
     useEffect(() => {
         const state = getState();
         setAuthor(state.author);
+        setEndAmount(state.endAmount);
+        setEndDate(state.endDate);
+        setDate(state.date);
     }, []);
 
     return (
@@ -34,10 +51,34 @@ const Additional = ({id, go}) => {
                 >
                     {authors.map((r, i) => <option value={i} key={i}>{r}</option>)}
                 </Select>
-                <FormLayoutGroup top="Сбор завершится">
-                    <Checkbox>Когда соберём сумму</Checkbox>
-                    <Checkbox>Когда наступит дата</Checkbox>
+                <FormLayoutGroup
+                    top="Сбор завершится"
+                    bottom={endAmount && endDate ? "Сбор завершится при наступлении обоих событий" : ""}
+                >
+                    <Checkbox checked={endAmount} onChange={(e) => setEndAmount(e.currentTarget.checked)}>
+                        Когда соберём сумму
+                    </Checkbox>
+                    <Checkbox checked={endDate} onChange={(e) => setEndDate(e.currentTarget.checked)}>
+                        Когда наступит заданная дата
+                    </Checkbox>
                 </FormLayoutGroup>
+                {endDate &&
+                    <Input
+                        type="date"
+                        top="Дата"
+                        value={date}
+                        onChange={(e) => setDate(e.currentTarget.value)}
+                    />
+                }
+
+                <Button
+                    size="xl"
+                    onClick={() => {(endAmount || endDate) && go("post")}}
+                    style={{opacity: (endAmount || endDate) ? 1.0 : 0.5}}
+                >
+                    Создать сбор
+                </Button>
+
             </FormLayout>
         </Panel>
     );

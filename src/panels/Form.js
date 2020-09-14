@@ -69,6 +69,12 @@ const Form = ({id, go}) => {
         }
     };
 
+    const goNext = () => {
+        if (image && name && desc && amount && target) {
+            isRegular ? go("post") : go("additional");
+        }
+    };
+
     return (
         <Panel id={id}>
             <PanelHeader
@@ -80,7 +86,7 @@ const Form = ({id, go}) => {
             </PanelHeader>
             <Div>
                 {image
-                    ? <div className="bg-image" style={{"background-image": `url(${image})`}}>
+                    ? <div className="bg-image" style={{"backgroundImage": `url(${image})`}}>
                         <div className="remove-btn" onClick={clearImage}>✕</div>
                     </div>
                     : <label>
@@ -141,9 +147,15 @@ const Form = ({id, go}) => {
                         {authors.map((r, i) => <option value={i} key={i}>{r}</option>)}
                     </Select>
                 }
-                <Button size="xl" onClick={() => {isRegular ? go("post") : go("additional")}}>
-                    {isRegular ? "Создать сбор" : "Далее"}
-                </Button>
+                {
+                    <Button
+                        size="xl"
+                        onClick={goNext}
+                        style={{opacity : image && name && desc && amount && target ? 1.0 : 0.5}}
+                    >
+                        {isRegular ? "Создать сбор" : "Далее"}
+                    </Button>
+                }
             </FormLayout>
         </Panel>
     );
