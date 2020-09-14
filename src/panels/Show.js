@@ -27,7 +27,7 @@ const Show = ({id, help}) => {
 
     return (
         <Panel id={id}>
-            <div className="cover-img" style={{backgroundImage: `url(${data.image})`}}/>
+            <div className="cover-img" style={{backgroundImage: `url(${data.image})`}} onClick={window.history.back()}/>
             <Header>{data.name}</Header>
             <SimpleCell description={`Автор ${authors[data.author || 0]}`}/>
             <Separator/>

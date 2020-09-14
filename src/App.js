@@ -24,7 +24,7 @@ const App = () => {
 	const help = () => {
 		setState({donated: getState().donated - (-100)});
 
-		if (bridge && bridge.supports("VKWebAppShowStoryBox")) {
+		if (bridge && bridge.supports("VKWebAppShowStoryBox") && bridge.isWebView()) {
 			setPopout(<Alert
 				actionsLayout="vertical"
 				actions={[{
@@ -41,7 +41,6 @@ const App = () => {
 				<h2>Пожертвование</h2>
 				<p>Спасибо, что пожертвовали деньги! Хотите рассказать об этом друзьям в Историях?</p>
 			</Alert>);
-
 		}
 	};
 
